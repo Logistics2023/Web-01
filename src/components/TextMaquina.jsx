@@ -1,4 +1,5 @@
 import { TypeAnimation } from 'react-type-animation';
+import { Translator, getTranslation } from '@miracleufo/react-g-translator';
 
 const TextMaquina = () => {
   return (
