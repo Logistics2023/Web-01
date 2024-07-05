@@ -296,7 +296,7 @@ export default function Home() {
                     <label htmlFor="location-search" className="mb-2 text-[12px] font-medium text-gray-900 sr-only dark:text-white">Your Email</label>
                     <div className="relative w-full">
                       <input type="search" id="location-search" className="block p-3 w-full h-full z-20 text-[12px] text-gray-900 border shadow-xl  rounded-[5px] focus:ring-blue-500 focus:border-blue-500" onChange={onChangeHandler} placeholder="Codigo de tracking" required />
-                      <button type="button" onClick={filterTracking} className="absolute top-0 end-0 h-full p-2.5 text-[12px] font-medium text-white bg-blue-700 rounded-r-[5px] border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                      <button type="button" onClick={filterTracking} className="absolute top-0 end-0 h-full p-2.5 flex justify-center items-center text-[12px] font-medium text-white bg-blue-700 rounded-r-[5px] border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
                         <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                           <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                         </svg>
@@ -385,18 +385,18 @@ export default function Home() {
                 {calcValueFCL !== 'NO DATA' && <h5 className='px-5 py-1 my-2 bg-blue-700  text-white '>ELIJE LA NAVIERA</h5>}
 
                 {calcValueFCL !== 'NO DATA' &&
-                  calcValueFCL.filter((i) => selectValue.EQUIPO.includes(i.EQUIPO)).map((i) => i.NAVIERA ).map(i => <button className={` rounded-full border-[1px] px-10 transition-all mr-2 ${i === naviera ? 'bg-[#ffbb00] border-[#d4d4d4]' : 'border-[#d4d4d4] '}`} onClick={() => setNaviera(i)}>{i}</button>)
+                  calcValueFCL.filter((i) => selectValue.EQUIPO.includes(i.EQUIPO)).map((i) => i.NAVIERA).map(i => <button className={` rounded-full border-[1px] px-10 transition-all mr-2 ${i === naviera ? 'bg-[#ffbb00] border-[#d4d4d4]' : 'border-[#d4d4d4] '}`} onClick={() => setNaviera(i)}>{i}</button>)
                 }
                 {calcValueFCL !== 'NO DATA' && console.log(calcValueFCL.filter((i) => selectValue.EQUIPO.includes(i.EQUIPO)))}
 
-                {calcValueFCL !== 'NO DATA' && console.log(calcValueFCL.filter((i) => selectValue.EQUIPO.includes(i.EQUIPO)).map((i) => i.NAVIERA ))}
+                {calcValueFCL !== 'NO DATA' && console.log(calcValueFCL.filter((i) => selectValue.EQUIPO.includes(i.EQUIPO)).map((i) => i.NAVIERA))}
                 {console.log(selectValue)}
                 {console.log(calcValueFCL)}
 
                 {calcValueFCL !== 'NO DATA' &&
                   calcValueFCL.map((item) => {
 
-                    return naviera === item.NAVIERA && selectValue.EQUIPO.includes(item.EQUIPO)&& <div className=" pt-5 " >
+                    return naviera === item.NAVIERA && selectValue.EQUIPO.includes(item.EQUIPO) && <div className=" pt-5 " >
                       <h5 className='px-5 py-1 my-2 bg-blue-700  text-white  '>DETALLES</h5>
                       <div className='flex w-full'><span className='w-full bg-slate-100 font-bold border px-3 py-1'>Origen</span><span className='w-full border px-3 py-1'>{item.ORIGEN}</span></div>
                       <div className='flex w-full'><span className='w-full bg-slate-100 font-bold border px-3 py-1'>Destino</span><span className='w-full border px-3 py-1'>{item.DESTINO}</span></div>
@@ -435,10 +435,6 @@ export default function Home() {
 
                         } USD</span>
                       </div>
-
-
-
-
                       <div className='relative  w-full grid grid-cols-2 gap-x-5 mt-5'>
                         <button type="submit" className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px]  px-5 py-2 text-center" onClick={() => setCalcValueFCL('NO DATA')}>Volver a calcular</button>
                         <InvoicePDF  ></InvoicePDF>
