@@ -246,7 +246,7 @@ export default function Home() {
   }
   return (
     <main className={`relative  w-screen `} onClick={reset} id='inicio'>
-      <Translator from='es' to={languaje.slice(0, 2).toLowerCase()} shouldFallback={()=>setUserSuccess('')}>
+      <Translator from='es' to={languaje.slice(0, 2).toLowerCase()} shouldFallback={() => setUserSuccess('')}>
 
         <section className='relative '>
           <video className='fixed bottom-0 w-full h-[100vh] pb-[10px] object-cover object-bottom ' autoPlay loop muted playsInline>
@@ -385,14 +385,18 @@ export default function Home() {
                 {calcValueFCL !== 'NO DATA' && <h5 className='px-5 py-1 my-2 bg-blue-700  text-white '>ELIJE LA NAVIERA</h5>}
 
                 {calcValueFCL !== 'NO DATA' &&
-                  calcValueFCL.map((i) => i.NAVIERA).map(i => <button className={` rounded-full border-[1px] px-10 transition-all mr-2 ${i === naviera ? 'bg-[#ffbb00] border-[#d4d4d4]' : 'border-[#d4d4d4] '}`} onClick={() => setNaviera(i)}>{i}</button>)
+                  calcValueFCL.filter((i) => selectValue.EQUIPO.includes(i.EQUIPO)).map((i) => i.NAVIERA ).map(i => <button className={` rounded-full border-[1px] px-10 transition-all mr-2 ${i === naviera ? 'bg-[#ffbb00] border-[#d4d4d4]' : 'border-[#d4d4d4] '}`} onClick={() => setNaviera(i)}>{i}</button>)
                 }
+                {calcValueFCL !== 'NO DATA' && console.log(calcValueFCL.filter((i) => selectValue.EQUIPO.includes(i.EQUIPO)))}
+
+                {calcValueFCL !== 'NO DATA' && console.log(calcValueFCL.filter((i) => selectValue.EQUIPO.includes(i.EQUIPO)).map((i) => i.NAVIERA ))}
+                {console.log(selectValue)}
                 {console.log(calcValueFCL)}
 
                 {calcValueFCL !== 'NO DATA' &&
                   calcValueFCL.map((item) => {
 
-                    return naviera === item.NAVIERA && <div className=" pt-5 " >
+                    return naviera === item.NAVIERA && selectValue.EQUIPO.includes(item.EQUIPO)&& <div className=" pt-5 " >
                       <h5 className='px-5 py-1 my-2 bg-blue-700  text-white  '>DETALLES</h5>
                       <div className='flex w-full'><span className='w-full bg-slate-100 font-bold border px-3 py-1'>Origen</span><span className='w-full border px-3 py-1'>{item.ORIGEN}</span></div>
                       <div className='flex w-full'><span className='w-full bg-slate-100 font-bold border px-3 py-1'>Destino</span><span className='w-full border px-3 py-1'>{item.DESTINO}</span></div>

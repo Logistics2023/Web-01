@@ -47,7 +47,7 @@ function Componente({ title, image, paragraph, id, route }) {
   const { cliente, languaje } = useUser()
 
   const router = useRouter()
-  console.log(paragraph)
+  // console.log(paragraph)
   return (
     <Translator from='es' to={languaje.slice(0, 2).toLowerCase()}>
       <div className='relative w-full min-h-full md:w-auto bg-[#ffffffcb] my-5 flex  lg:max-w-[500px] lg:min-w-[250px]  lg:text-[18px] lg:mx-5 lg:flex lg:flex-col lg:justify-between lg:items-center rounded-[15px] '>
