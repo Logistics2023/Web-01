@@ -244,7 +244,7 @@ export default function Home() {
       return val
     }
   }
-  return (     
+  return (           
     <main className={`relative  w-screen `} onClick={reset} id='inicio'>
       <Translator from='es' to={languaje.slice(0, 2).toLowerCase()} shouldFallback={() => setUserSuccess('')}>
 
